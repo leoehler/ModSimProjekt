@@ -1,2 +1,4 @@
 /.idea/
 *.iml
+out/
+ModSim_FishSimulation.iml
