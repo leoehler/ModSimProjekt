@@ -10,4 +10,12 @@ public class SeaTile {
     public SeaTile(){
         water = false;
     }
+
+    @Override
+    public String toString() {
+        if(water)
+            return "O";
+        else
+            return "X";
+    }
 }

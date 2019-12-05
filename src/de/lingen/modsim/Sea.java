@@ -8,12 +8,7 @@ public class Sea {
 
 
     public Sea (){
-        SeaBoard = new SeaTile[10][10];
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                SeaBoard[i][j] = new SeaTile();
-            }
-        }
+        this(10, 10);
     }
 
     public Sea (int height, int width){
@@ -26,6 +21,20 @@ public class Sea {
                 SeaBoard[x][y] = new SeaTile();
             }
         }
+
+    }
+
+
+
+    public void showOnConsole(){
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                System.out.print("| " + SeaBoard[j][i].toString() + " ");
+            }
+            System.out.print("|");
+            System.out.println("");
+        }
+
 
     }
 }
