@@ -1,5 +1,3 @@
-import de.lingen.modsim.Sea;
-
 public class SeaTests {
 
     public static void main (String [] args){
