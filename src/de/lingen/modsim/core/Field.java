@@ -1,6 +1,11 @@
 package de.lingen.modsim.core;
 
-import java.util.HashMap;
+import de.lingen.modsim.core.food.Point2DFood;
+import de.lingen.modsim.db.Database;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Field {
@@ -8,7 +13,7 @@ public class Field {
     public final int MAX_X;
     public final int MAX_Y;
 
-    HashMap<Integer, Integer> m = new HashMap<>();
+    private static Random x = new Random(123);
 
     private static class Inner {
         private static Field field = new Field();
@@ -23,18 +28,56 @@ public class Field {
         return Inner.field;
     }
 
-    public void generateFood(int amount){
-        Random x = new Random();
-        x.nextInt();
-        for (int i = 0; i < 10; i++) {
-            if (m.containsKey(i)) {
+    public void generateRandomFoodPoints(int amount){
+        ArrayList<Point2DFood> foodsPoints = new ArrayList<>(amount);
 
-            }
+        for (int i = 0; i < amount; i++) {
+            Point2DFood point2D;
 
+            do {
+                point2D = Point2DFood.randomPoint();
+            } while (foodsPoints.contains(point2D));
+
+            foodsPoints.add(point2D);
         }
 
-    }
-    public void generateFoodAt(){
+        commitFoodToDB(foodsPoints);
 
+    }
+
+    private void commitFoodToDB(ArrayList<Point2DFood> foodPoints) {
+        String query = "INSERT INTO FOOD(X_POS, Y_POS) VALUES (?, ?)";
+        try {
+            PreparedStatement statement = Database.getInstance().getConn().prepareStatement(query);
+
+            for (Point2DFood item : foodPoints) {
+                statement.setInt(1, item.x);
+                statement.setInt(2, item.y);
+                statement.execute();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void generateRandomFoodDB(int amount){
+        String query = "INSERT INTO FOOD VALUES (?, ?, ?)";
+        try {
+            PreparedStatement statement = Database.getInstance().getConn().prepareStatement(query);
+            Point2DFood point2DFood;
+
+            for (int i = 0; i < amount; i++) {
+//                do {
+                    point2DFood = Point2DFood.randomPoint();
+                    statement.setInt(1, point2DFood.x);
+                    statement.setInt(2, point2DFood.y);
+                    statement.setInt(3, 1);
+                    statement.execute();
+//                } while (!statement.execute());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

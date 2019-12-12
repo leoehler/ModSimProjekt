@@ -9,4 +9,5 @@ public class Food {
     public Food(Point2D pos) {
         this.pos = pos;
     }
+
 }

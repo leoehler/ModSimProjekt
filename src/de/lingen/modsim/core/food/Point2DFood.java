@@ -10,6 +10,17 @@ public class Point2DFood extends Point2D {
         super(x, y);
     }
 
+    public static Point2DFood randomPoint() {
+        Field field = Field.getInstance();
+
+        int x = (int) (random.nextInt((int) (field.MAX_X - (field.MAX_X * DEAD_ZONE * 2)) + 1) +
+                       field.MAX_X * DEAD_ZONE);
+        int y = (int) (random.nextInt((int) (field.MAX_Y - (field.MAX_Y * DEAD_ZONE * 2)) + 1) +
+                       field.MAX_Y * DEAD_ZONE);
+
+        return new Point2DFood(x, y);
+    }
+
     @Override
     public boolean inBoundsX(int x) {
         return (x >= field.MAX_X * DEAD_ZONE) && (x <= field.MAX_X * (1 - DEAD_ZONE));
@@ -30,12 +41,10 @@ public class Point2DFood extends Point2D {
         this.y = inBoundsY(y) ? y : randomPoint().y;
     }
 
-    public static Point2DFood randomPoint() {
-        Field field = Field.getInstance();
-
-        int x = (int) (random.nextInt((int) (field.MAX_X - (field.MAX_X * DEAD_ZONE * 2)) + 1) + field.MAX_X * DEAD_ZONE);
-        int y = (int) (random.nextInt((int) (field.MAX_Y - (field.MAX_Y * DEAD_ZONE * 2)) + 1) + field.MAX_Y * DEAD_ZONE);
-
-        return new Point2DFood(x,y);
+    @Override
+    public boolean equals(Object obj) {
+        return x == ((Point2DFood) obj).x
+               && y == ((Point2DFood) obj).y
+               && obj.getClass() == this.getClass();
     }
 }
