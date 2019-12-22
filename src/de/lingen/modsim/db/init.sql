@@ -5,10 +5,11 @@ USE ModSimProject;
 # ======================================
 
 DROP TABLE IF EXISTS FOOD;
-CREATE TABLE FOOD (
-                      X_POS INT,
-                      Y_POS INT,
-                      ENERGY INT NOT NULL DEFAULT 1,
-                      PRIMARY KEY (X_POS, Y_POS)
+CREATE TABLE FOOD
+(
+    X_POS  INT,
+    Y_POS  INT,
+    ENERGY INT NOT NULL DEFAULT 1,
+    PRIMARY KEY (X_POS, Y_POS)
 );
 

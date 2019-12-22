@@ -29,9 +29,12 @@ public abstract class Blob {
         this.pos = pos;
     }
 
-    public void calculateEnergycostPerTimeFrame(){
-        energy = Math.pow(size,3) * Math.pow(speed,2) + sense;
+    public void calculateEnergyCostPerTimeFrame(){
+//        energy = Math.pow(size,3) + Math.pow(speed,2) + sense;
+        // size^3 + speed^2 + sense
+        energy = (size * size * size) + (speed * speed) + sense;
     }
+
 
     /**
      * s = v * t

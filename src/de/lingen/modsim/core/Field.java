@@ -60,24 +60,4 @@ public class Field {
             e.printStackTrace();
         }
     }
-
-    public void generateRandomFoodDB(int amount){
-        String query = "INSERT INTO FOOD VALUES (?, ?, ?)";
-        try {
-            PreparedStatement statement = Database.getInstance().getConn().prepareStatement(query);
-            Point2DFood point2DFood;
-
-            for (int i = 0; i < amount; i++) {
-//                do {
-                    point2DFood = Point2DFood.randomPoint();
-                    statement.setInt(1, point2DFood.x);
-                    statement.setInt(2, point2DFood.y);
-                    statement.setInt(3, 1);
-                    statement.execute();
-//                } while (!statement.execute());
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 }

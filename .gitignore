@@ -1,2 +1,12 @@
 /.idea/
 *.iml
+out/production/ModSimProjekt/de/lingen/modsim/core/blob/
+
+out/production/ModSimProjekt/de/lingen/modsim/core/
+
+out/production/ModSimProjekt/de/lingen/modsim/db/
+
+out/production/ModSimProjekt/de/lingen/modsim/
+out/production/ModSimProjekt/META-INF/
+out/production/ModSim_FishSimulation/
+/ModSimProjekt.iml

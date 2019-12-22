@@ -5,7 +5,6 @@ import de.lingen.modsim.core.blob.NormalBlob;
 import de.lingen.modsim.core.blob.Point2DBlob;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 
 public class Population extends ArrayList<Blob> {
@@ -17,10 +16,6 @@ public class Population extends ArrayList<Blob> {
         super(SIZE);
 
         field = Field.getInstance();
-    }
-
-    private static class Inner {
-        private static Population population = new Population();
     }
 
     public static Population getInstance() {
@@ -39,6 +34,10 @@ public class Population extends ArrayList<Blob> {
     }
 
     public void liveOrDeathPhase() {
-        //TODO live or death pahse
+        //TODO live or death phase
+    }
+
+    private static class Inner {
+        private static Population population = new Population();
     }
 }
