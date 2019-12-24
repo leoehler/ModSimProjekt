@@ -1,5 +1,9 @@
 package de.lingen.modsim.core;
 
+import de.lingen.modsim.model.food.Food;
+
+import java.util.List;
+
 public abstract class Blob implements ISimulationObject {
 
     private double energy;
@@ -37,9 +41,33 @@ public abstract class Blob implements ISimulationObject {
     /**
      * s = v * t
      * strecke = geschwindigkeit * zeit
+     *
+     * @param nearestFood
      */
-    public void move() {
-        //TODO move
+    public void move(List<Food> nearestFood) {
+        Food foodToCatchUp = closestFood(nearestFood);
+
+        // if there try to reach
+
+        // if no do random move
+
+    }
+
+    private Food closestFood(List<Food> foods) {
+        Food closestFood = foods.get(0);
+        double closestDistance = pos.distanceNoSqrt(foods.get(0).getPos());
+
+        double distance = .0;
+
+        for (Food f : foods) {
+            distance = pos.distanceNoSqrt(f.getPos());
+            if (distance < closestDistance) {
+                closestFood = f;
+                closestDistance = distance;
+            }
+        }
+
+        return closestFood;
     }
 
     public abstract void moveStrategy();
@@ -58,5 +86,9 @@ public abstract class Blob implements ISimulationObject {
 
     public double getSense() {
         return sense;
+    }
+
+    public Point2D getPos() {
+        return pos;
     }
 }
