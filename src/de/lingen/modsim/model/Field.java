@@ -1,6 +1,6 @@
-package de.lingen.modsim.core;
+package de.lingen.modsim.model;
 
-import de.lingen.modsim.core.food.Point2DFood;
+import de.lingen.modsim.model.food.Point2DFood;
 import de.lingen.modsim.db.Database;
 
 import java.sql.PreparedStatement;
@@ -51,8 +51,8 @@ public class Field {
             PreparedStatement statement = Database.getInstance().getConn().prepareStatement(query);
 
             for (Point2DFood item : foodPoints) {
-                statement.setInt(1, item.x);
-                statement.setInt(2, item.y);
+                statement.setInt(1, item.getX());
+                statement.setInt(2, item.getY());
                 statement.execute();
             }
 

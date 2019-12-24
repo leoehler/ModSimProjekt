@@ -1,7 +1,6 @@
-package de.lingen.modsim.core.blob;
+package de.lingen.modsim.model.blob;
 
-import de.lingen.modsim.core.Point2D;
-import de.lingen.modsim.core.blob.Blob;
+import de.lingen.modsim.core.Blob;
 
 public class NormalBlob extends Blob {
 
@@ -17,5 +16,10 @@ public class NormalBlob extends Blob {
     @Override
     public void moveStrategy() {
         //TODO move strategy
+    }
+
+    @Override
+    public void simulate(int timeStep) {
+
     }
 }

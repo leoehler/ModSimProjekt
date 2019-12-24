@@ -1,6 +1,6 @@
-package de.lingen.modsim.core.blob;
+package de.lingen.modsim.model.blob;
 
-import de.lingen.modsim.core.Field;
+import de.lingen.modsim.model.Field;
 import de.lingen.modsim.core.Point2D;
 
 public class Point2DBlob extends Point2D {

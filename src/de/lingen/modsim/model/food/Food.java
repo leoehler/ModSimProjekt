@@ -1,4 +1,4 @@
-package de.lingen.modsim.core.food;
+package de.lingen.modsim.model.food;
 
 import de.lingen.modsim.core.Point2D;
 

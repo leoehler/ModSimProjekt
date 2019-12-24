@@ -1,5 +1,7 @@
 package de.lingen.modsim.core;
 
+import de.lingen.modsim.model.Field;
+
 import java.util.Random;
 
 public abstract class Point2D {

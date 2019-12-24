@@ -1,16 +1,16 @@
 package de.lingen.modsim;
 
-import de.lingen.modsim.core.Field;
 import de.lingen.modsim.db.Database;
+import de.lingen.modsim.model.Field;
+import de.lingen.modsim.model.Population;
 
 public class Main {
 
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
 
-        Database db = Database.getInstance();
-        Field f = Field.getInstance();
-        f.generateRandomFoodPoints(100);
+        Population population = Population.getInstance();
+        population.startPopulation(100);
 
         long endTime = System.currentTimeMillis();
 
