@@ -11,7 +11,7 @@ public class Database {
         String dbName = "ModSimProject";
         String driver = "org.mariadb.jdbc.Driver";
         String userName = "root";
-        String password = "123";
+        String password = "password";
         try {
             Class.forName(driver).newInstance();
             this.conn = DriverManager.getConnection(url + dbName, userName, password);
