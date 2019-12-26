@@ -99,4 +99,9 @@ public abstract class Point2D {
      */
     public abstract void setY(int y);
 
+    @Override
+    public String toString() {
+        return "x:" + x +
+               ", y:" + y;
+    }
 }

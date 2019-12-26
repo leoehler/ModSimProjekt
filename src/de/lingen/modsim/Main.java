@@ -12,9 +12,6 @@ public class Main {
 
         System.out.println( population );
 
-        long endTime;
-        long startTime = System.currentTimeMillis();
-
         try {
 
             population.startPopulation( 100 );
@@ -23,9 +20,6 @@ public class Main {
             System.err.println( "Something went wrong with the database!!" );
             e.printStackTrace();
         }
-
-        endTime = System.currentTimeMillis();
-        System.out.println( "time: " + (endTime - startTime) / 60 );
 
         System.out.println( population );
     }

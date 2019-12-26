@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Population extends ArrayList<Blob> {
     //TODO remove, just temporary solution
-    private static final int   ITERATION_SIZE = 20;
+    private static final int   ITERATION_SIZE = 100;
     private final static int   SIZE           = 1000;
     private              Field field;
 
@@ -47,7 +47,7 @@ public class Population extends ArrayList<Blob> {
              add( new NormalBlob( Point2DBlob.randomPoint() ) );
 
         // main loop
-        for (int i = 0; i < ITERATION_SIZE; i++) {
+        for (int i = 0; i < ITERATION_SIZE && size() > 0; i++) {
             actionPhase();
             liveOrDeathPhase();
         }
@@ -60,7 +60,7 @@ public class Population extends ArrayList<Blob> {
      * @throws SQLException sql error
      */
     public void actionPhase() throws SQLException {
-        field.generateRandomFoodPoints( 100 );
+        field.generateRandomFoodPoints( 200 );
 
         for (Blob blob : this)
             blob.move( field.getNearestFood( blob ) );
@@ -81,10 +81,9 @@ public class Population extends ArrayList<Blob> {
     public String toString() {
         StringBuilder builder = new StringBuilder( 32 );
 
-        forEach( blob -> builder.append( "{ \n" )
-                                .append( "\t" )
+        forEach( blob -> builder.append( "[ " )
                                 .append( blob )
-                                .append( "\n}\n" ) );
+                                .append( " ]\n" ) );
 
         return builder.toString();
     }

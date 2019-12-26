@@ -18,8 +18,8 @@ public class Field {
     public final   int    MAX_Y;
 
     private Field() {
-        MAX_X = 1000;
-        MAX_Y = 1000;
+        MAX_X = 100;
+        MAX_Y = 100;
     }
 
     public static Field getInstance() {
@@ -45,7 +45,7 @@ public class Field {
     private void commitFoodToDB(ArrayList<Point2DFood> foodPoints) throws SQLException {
         Database.getInstance().emptyFood();
 
-        String query = "INSERT INTO FOOD(X_POS, Y_POS) VALUES (?, ?)";
+        String query = "INSERT INTO FOOD(X_POS, Y_POS, ENERGY) VALUES (?, ?, 10)";
 
         PreparedStatement statement = Database.getInstance().getConn().prepareStatement(query);
 
@@ -57,7 +57,7 @@ public class Field {
     }
 
     public ArrayList<Food> getNearestFood(Blob blob) throws SQLException {
-        String            query     = "SELECT X_POS, Y_POS FROM FOOD WHERE X_POS >= ? AND X_POS <= ? AND Y_POS >= ? AND Y_POS <= ?;";
+        String            query     = "SELECT X_POS, Y_POS, ENERGY FROM FOOD WHERE X_POS >= ? AND X_POS <= ? AND Y_POS >= ? AND Y_POS <= ?;";
         PreparedStatement statement = Database.getInstance().getConn().prepareStatement(query);
 
         statement.setDouble(1, blob.getPos().getX() - blob.getSense());
@@ -72,6 +72,8 @@ public class Field {
         while (resultSet.next())
             foods.add(new Food(new Point2DFood(resultSet.getInt("X_POS"), resultSet.getInt("Y_POS")),
                                 resultSet.getInt("ENERGY")));
+
+//        System.out.println(foods);
 
         return foods;
     }

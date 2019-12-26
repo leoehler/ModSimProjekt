@@ -23,10 +23,10 @@ public abstract class Blob implements ISimulationObject {
      * @param pos spawn position
      */
     public Blob( Point2D pos ) {
-        energy = 100;
+        energy = 200;
         speed  = 0.5;
         size   = 1;
-        sense  = 1;
+        sense  = 5;
 
         this.pos = pos;
     }
@@ -120,6 +120,7 @@ public abstract class Blob implements ISimulationObject {
                ", speed=" + speed +
                ", size=" + size +
                ", sense=" + sense +
+               ", pos=" + pos +
                '}';
     }
 
