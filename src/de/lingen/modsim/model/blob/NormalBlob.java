@@ -9,7 +9,7 @@ public class NormalBlob extends Blob {
         super(pos);
     }
 
-    public NormalBlob(double energy, double speed, double size, double sense, Point2DBlob pos) {
+    public NormalBlob(double energy, double speed, double size, int sense, Point2DBlob pos) {
         super(energy, speed, size, sense, pos);
     }
 

@@ -43,6 +43,8 @@ public class Field {
     }
 
     private void commitFoodToDB(ArrayList<Point2DFood> foodPoints) throws SQLException {
+        Database.getInstance().emptyFood();
+
         String query = "INSERT INTO FOOD(X_POS, Y_POS) VALUES (?, ?)";
 
         PreparedStatement statement = Database.getInstance().getConn().prepareStatement(query);
@@ -65,13 +67,13 @@ public class Field {
 
         ResultSet resultSet = statement.executeQuery();
 
-        ArrayList<Food> points = new ArrayList<>();
+        ArrayList<Food> foods = new ArrayList<>();
 
         while (resultSet.next())
-            points.add(new Food(new Point2DFood(resultSet.getInt("X_POS"), resultSet.getInt("Y_POS")),
+            foods.add(new Food(new Point2DFood(resultSet.getInt("X_POS"), resultSet.getInt("Y_POS")),
                                 resultSet.getInt("ENERGY")));
 
-        return points;
+        return foods;
     }
 
     private static class Inner {

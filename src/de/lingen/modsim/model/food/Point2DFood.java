@@ -6,10 +6,19 @@ import de.lingen.modsim.core.Point2D;
 public class Point2DFood extends Point2D {
     private static final double DEAD_ZONE = 0.1; // no food will spawn there i.e. 10%
 
+    /**
+     * constructor with given points
+     * @param x x pos
+     * @param y y pos
+     */
     public Point2DFood(int x, int y) {
         super(x, y);
     }
 
+    /**
+     * generates a random point in middle of the field
+     * @return random point
+     */
     public static Point2DFood randomPoint() {
         Field field = Field.getInstance();
 
@@ -21,6 +30,10 @@ public class Point2DFood extends Point2D {
         return new Point2DFood(x, y);
     }
 
+    /**
+     * @param x checks if an x value is in the area
+     * @return true = is in the area
+     */
     @Override
     public boolean inBoundsX(int x) {
         return (x >= field.MAX_X * DEAD_ZONE) && (x <= field.MAX_X * (1 - DEAD_ZONE));
